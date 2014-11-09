@@ -10,8 +10,6 @@ void swap(int *elements, const int first, const int last) {
 	double j = (double)(last-first)/2;
 
 	for (int i = 0; i < round(j); i++) {
-//		cout << "i = " << i+first << endl;
-
 		tmpNumber = elements[i+first];
  		elements[i+first] = elements[last-i];
 		elements[last-i] = tmpNumber;
