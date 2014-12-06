@@ -13,8 +13,8 @@ using namespace std;
 #define ROWS 5
 #define COLUMNS 6
 
-int summElements(int* row, int index) {
-    return row[index]+row[ROWS-index];
+int mulElements(int* row, int index) {
+    return row[index]*row[ROWS-index];
 }
 
 int main() {
@@ -35,14 +35,21 @@ int main() {
 
     cout << endl << endl;
 
-    for (int i = 0; i < ROWS; i++) {
+    int summ = 0;
+    int tmp;
+
+    for (int i = 0; i < round((float) ROWS/2); i++) {
         for (int j = 0; j < COLUMNS; j++) {
             cout << m[i][j] << " ";
         }
-        cout << " = " << summElements(m[i], i);
+
+        tmp = mulElements(m[i], i);
+        summ += tmp;
+        cout << " = " << tmp;
         cout << endl;
     }
 
-    cout << "Hello, World!" << endl;
+    cout << endl;
+    cout << "Hello, World! summ = " << summ << endl;
     return 0;
 }
