@@ -1,6 +1,4 @@
 #include <iostream>
-#include <Python/Python.h>
-#include <complex>
 
 using namespace std;
 
