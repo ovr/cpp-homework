@@ -77,7 +77,7 @@ public:
     }
 
     virtual double calc(double number) {
-        double result;
+        double result = 0;
 
         int i;
         for (i = this->order; i >= 2; i-- ) {
