@@ -53,9 +53,9 @@ public:
             exit(10);
         }
 
-        double *elements = input.getElements();
-        for (int i = 0; i < this->getOrder(); i++) {
-            this->elements[i] += elements[i];
+        double *elementsTmp = input.getElements();
+        for (int i = 0; i < this->getOrder()+1; i++) {
+            this->elements[i] += elementsTmp[i];
         }
 
         return this;
