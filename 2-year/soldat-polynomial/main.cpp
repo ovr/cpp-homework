@@ -93,7 +93,7 @@ int main() {
     cout << tmp1 << endl;
 
     //8+3+6=17
-    cout << "f(2)=" << tmp1.calc(1) << endl;
+    cout << "f(1)=" << tmp1.calc(1) << endl;
 
     //32+6+6=44
     cout << "f(2)=" << tmp1.calc(2) << endl;
