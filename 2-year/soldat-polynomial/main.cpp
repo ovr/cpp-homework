@@ -3,11 +3,18 @@
 
 using namespace std;
 
+class BasePolynomial {
+    /**
+     * Чистый абстрактный виртуальный метод
+     */
+    virtual double calc(double number) = 0;
+};
+
 /**
  * Описать класс многочлен, с полями степень, аргумент и коэффициенты.
  * Создать метод вычисления значения многочлена от аргумента и вывода многочлена в общем виде на экран.
 */
-class Polynomial {
+class Polynomial : public BasePolynomial {
 public:
     /**
      * Степень
@@ -41,21 +48,35 @@ public:
     }
 
     // Сложение
-    Polynomial * operator+(Polynomial &) {
+    Polynomial *operator += (Polynomial input) {
+        if (input.getArg() != this->getArg()) {
+            exit(10);
+        }
+
+        double *elements = input.getElements();
+        for (int i = 0; i < this->getOrder(); i++) {
+            this->elements[i] += elements[i];
+        }
+
         return this;
     }
 
-    // Вычитание
-    Polynomial *operator-(Polynomial &) {
-        return this;
-    }
 
     // Перемножение
-    Polynomial *operator*(Polynomial &) {
+    Polynomial *operator*=(const int number) {
+        int i;
+
+        for (i = this->getOrder(); i >= 2; i-- ) {
+            this->elements[i] *= number;
+        }
+
+        elements[i] *= number;
+        elements[i-1] *= number;
+
         return this;
     }
 
-    double calc(double number) {
+    virtual double calc(double number) {
         double result;
 
         int i;
@@ -69,7 +90,7 @@ public:
         return result;
     }
 
-    friend ostream &operator<<(ostream &fo, Polynomial &fp)
+    friend ostream &operator << (ostream &fo, Polynomial &fp)
     {
         double *elements = fp.getElements();
 
@@ -97,6 +118,22 @@ int main() {
 
     //32+6+6=44
     cout << "f(2)=" << tmp1.calc(2) << endl;
+
+    cout << endl;
+
+    double *tmp2X = new double[3]{1,2,3};
+    Polynomial tmp2 = Polynomial(2, tmp2X);
+    cout << tmp2 << endl;
+
+    cout << endl;
+
+    tmp1 += tmp2;
+    cout << tmp1 << endl;
+
+    cout << endl;
+
+    tmp1 *= 2;
+    cout << tmp1;
 
     return 0;
 }
