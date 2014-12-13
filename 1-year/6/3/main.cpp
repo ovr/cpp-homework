@@ -14,17 +14,17 @@ int main()
 {
 	srand(time(0));
 	
-    fstream inputFile(IN_NAME, ios::in | ios::out);
-    fstream dublicateSearchInputFile;
-    ofstream(OUT_NAME);
-    fstream outFile(OUT_NAME, ios::in | ios::out);
+	fstream inputFile(IN_NAME, ios::in | ios::out);
+	fstream dublicateSearchInputFile;
+	ofstream(OUT_NAME);
+	fstream outFile(OUT_NAME, ios::in | ios::out);
 	
-    int n = 10;
- 
-    if (!inputFile.is_open() || !outFile.is_open()) {
+	int n = 10;
+	
+	if (!inputFile.is_open() || !outFile.is_open()) {
 		cerr << "ERROR! File can't opened. \n";
-        exit(EXIT_FAILURE);
-    }
+		exit(EXIT_FAILURE);
+	}
 	
 	while(n > 0) {
 		inputFile << rand()%10;
@@ -72,5 +72,5 @@ int main()
 	}
 	
 	
-    return 0;
+	return 0;
 }
