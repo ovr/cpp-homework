@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/ovr/projects/ovr/cpp-homework/2-year-2th-part/5/main.cpp
+iostream
+-
+cmath
+-
+algorithm
+-
+ctime
+-
+
