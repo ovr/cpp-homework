@@ -12,37 +12,94 @@ struct Item {
     string title, name;
 };
 
-bool sortFunction (const Item& a, const Item& b) {
-    return a.title < b.title;
-}
-
-
-void Print(const Item& product) {
+void printItem(const Item& product) {
     cout << "|" << setw(20) << product.title
-         << "|" << setw(20) << product.name
-         << "|" << setw(10) << product.color
-         << "|" << setw(10) << product.size
-         << "|" << setw(10) << product.count
-         << "|" << endl;
+    << "|" << setw(20) << product.name
+    << "|" << setw(10) << product.color
+    << "|" << setw(10) << product.size
+    << "|" << setw(10) << product.count
+    << "|" << endl;
 
     cout << "----------------------------------------------------------------------------" << endl;
 }
 
-void PrintWomen(const Item& product) {
+bool sortFunction (const Item& a, const Item& b) {
+    return a.title < b.title;
+}
+
+void printWomen(const Item& product) {
     if (!product.title.empty() && product.title.at(0) != 'M') {
-        Print(product);
+        printItem(product);
     }
 }
 
-void PrintMen(const Item& product) {
+void printMen(const Item& product) {
     if (!product.title.empty() && product.title.at(0) == 'M') {
-        Print(product);
+        printItem(product);
     }
 }
 
-std::vector<Item> products;
+class ConsoleApplication {
+public:
+    void readFromFile();
+    void addItem();
+    void listing();
+    void listingMen();
+    void listingWomen();
+    void clear();
+    void sort();
+protected:
+    std::vector<Item> products;
 
-inline void addItem()
+    void printTableHeader();
+};
+
+void ConsoleApplication::sort() {
+    std::sort(products.begin(), products.end(), sortFunction);
+}
+
+void ConsoleApplication::clear() {
+    products.clear();
+}
+
+void ConsoleApplication::listing()
+{
+    printTableHeader();
+
+    for_each(products.begin(), products.end(), printItem);
+}
+
+
+void ConsoleApplication::listingMen()
+{
+    printTableHeader();
+
+    for_each(products.begin(), products.end(), printMen);
+}
+
+
+void ConsoleApplication::listingWomen()
+{
+    printTableHeader();
+
+    for_each(products.begin(), products.end(), printWomen);
+}
+
+
+void ConsoleApplication::printTableHeader()
+{
+    cout << "+==========================================================================+" << endl;
+    cout << "|" << setw(20) << "Title"
+    << "|" << setw(20) << "Name"
+    << "|" << setw(10) << "Color"
+    << "|" << setw(10) << "Count"
+    << "|" << setw(10) << "Size"
+    << "|" << endl;
+    cout << "+==========================================================================+" << endl;
+}
+
+
+void ConsoleApplication::addItem()
 {
     Item item;
 
@@ -69,19 +126,7 @@ inline void addItem()
     products.push_back(item);
 }
 
-void printTableHeader()
-{
-    cout << "+==========================================================================+" << endl;
-    cout << "|" << setw(20) << "Title"
-    << "|" << setw(20) << "Name"
-    << "|" << setw(10) << "Color"
-    << "|" << setw(10) << "Count"
-    << "|" << setw(10) << "Size"
-    << "|" << endl;
-    cout << "+==========================================================================+" << endl;
-}
-
-void readFromFile()
+void ConsoleApplication::readFromFile()
 {
     ifstream ifsStud("products.txt");
 
@@ -99,11 +144,11 @@ void readFromFile()
         ifsStud >> item.color;
         ifsStud >> item.count;
 
-        products.push_back(item);
+        this->products.push_back(item);
     }
 }
 
-void menu()
+void menu(ConsoleApplication &app)
 {
     cout << "Please select" << endl;
     cout << "1. Read from file" << endl;
@@ -122,40 +167,31 @@ void menu()
 
     switch (menuItem) {
         case 1:
-            readFromFile();
+            app.readFromFile();
             cout << "Success, read" << endl << endl;
             break;
         case 2:
-            addItem();
+            app.addItem();
             cout << "Success, adding" << endl << endl;
             break;
         case 3:
-            printTableHeader();
-
-            for_each(products.begin(), products.end(), Print);
+            app.listing();
             cout << "Success, listing" << endl << endl;
             break;
         case 4:
-            sort(products.begin(), products.end(), sortFunction);
-
-            printTableHeader();
-            for_each(products.begin(), products.end(), Print);
-            cout << endl << endl;
+            app.sort();
+            cout << "Success, sort" << endl << endl;
             break;
         case 5:
-
-            printTableHeader();
-            for_each(products.begin(), products.end(), PrintMen);
-            cout << endl << endl;
+            app.listingMen();
+            cout << "Success, listing Men" << endl << endl;
             break;
         case 6:
-
-            printTableHeader();
-            for_each(products.begin(), products.end(), PrintWomen);
-            cout << endl << endl;
+            app.listingWomen();
+            cout << "Success, listing Women" << endl << endl;
             break;
         case 7:
-            products.clear();
+            app.clear();
             cout << "Success, clear memory db" << endl << endl;
             break;
         case 8:
@@ -167,13 +203,15 @@ void menu()
             break;
     }
 
-    menu();
+    menu(app);
 }
 
 int main()
 {
     system("clear");
-    menu();
+
+    ConsoleApplication app;
+    menu(app);
 
     return 0;
 }
