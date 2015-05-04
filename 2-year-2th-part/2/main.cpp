@@ -4,7 +4,6 @@
 #include <fstream>
 #include <string>
 #include <vector>
-#include "table_printer.h"
 
 using namespace std;
 
@@ -72,14 +71,14 @@ inline void addItem()
 
 void printTableHeader()
 {
-    cout << "============================================================================" << endl;
+    cout << "+==========================================================================+" << endl;
     cout << "|" << setw(20) << "Title"
     << "|" << setw(20) << "Name"
     << "|" << setw(10) << "Color"
     << "|" << setw(10) << "Count"
     << "|" << setw(10) << "Size"
     << "|" << endl;
-    cout << "============================================================================" << endl;
+    cout << "+==========================================================================+" << endl;
 }
 
 void readFromFile()
