@@ -91,7 +91,7 @@ void ConsoleApplication::findByTitle()
     for (size_t i = 0; i < this->products.size(); i++) {
         item = this->products[i];
 
-        if (!item.title.empty() && item.title.compare(title)) {
+        if (!item.title.empty() && item.title.compare(title) == 0) {
             printItem(item);
         }
     }
