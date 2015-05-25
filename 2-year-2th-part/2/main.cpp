@@ -46,6 +46,7 @@ public:
     void listing();
     void listingMen();
     void listingWomen();
+    void findByTitle();
     void clear();
     void sort();
 protected:
@@ -77,6 +78,24 @@ void ConsoleApplication::listingMen()
     for_each(products.begin(), products.end(), printMen);
 }
 
+
+void ConsoleApplication::findByTitle()
+{
+    string title;
+
+    cout << "Please write title to find = ";
+    cin >> title;
+
+    Item item;
+
+    for (size_t i = 0; i < this->products.size(); i++) {
+        item = this->products[i];
+
+        if (!item.title.empty() && item.title.compare(title)) {
+            printItem(item);
+        }
+    }
+}
 
 void ConsoleApplication::listingWomen()
 {
@@ -157,8 +176,9 @@ void menu(ConsoleApplication &app)
     cout << "4. Sort listing" << endl;
     cout << "5. Lising men" << endl;
     cout << "6. Lising women" << endl;
-    cout << "7. Clear db" << endl;
-    cout << "8. Exit" << endl;
+    cout << "7. Find by title" << endl;
+    cout << "8. Clear db" << endl;
+    cout << "9. Exit" << endl;
 
     int menuItem;
     cin >> menuItem;
@@ -191,10 +211,14 @@ void menu(ConsoleApplication &app)
             cout << "Success, listing Women" << endl << endl;
             break;
         case 7:
+            app.findByTitle();
+            cout << "Success, listing by title" << endl << endl;
+            break;
+        case 8:
             app.clear();
             cout << "Success, clear memory db" << endl << endl;
             break;
-        case 8:
+        case 9:
             cout << "Good buy" << endl;
             exit(EXIT_SUCCESS);
             break;
