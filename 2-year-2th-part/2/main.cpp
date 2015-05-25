@@ -219,7 +219,38 @@ void menu(ConsoleApplication &app)
             cout << "Success, clear memory db" << endl << endl;
             break;
         case 9:
-            cout << "Good buy" << endl;
+            cout << "Good buy, meow :3" << endl;
+            cout <<
+                "                  ;,_            ,\n"
+                "                 _uP~\"b          d\"u,\n"
+                "                dP'   \"b       ,d\"  \"o\n"
+                "               d\"    , `b     d\"'    \"b\n"
+                "              l] [    \" `l,  d\"       lb\n"
+                "              Ol ?     \"  \"b`\"=uoqo,_  \"l\n"
+                "            ,dBb \"b        \"b,    `\"~~TObup,_\n"
+                "          ,d\" (db.`\"         \"\"     \"tbc,_ `~\"Yuu,_\n"
+                "        .d\" l`T'  '=                      ~     `\"\"Yu,\n"
+                "      ,dO` gP,                           `u,   b,_  \"b7\n"
+                "     d?' ,d\" l,                           `\"b,_ `~b  \"1\n"
+                "   ,8i' dl   `l                 ,ggQOV\",dbgq,._\"  `l  lb\n"
+                "  .df' (O,    \"             ,ggQY\"~  , @@@@@d\"bd~  `b \"1\n"
+                " .df'   `\"           -=@QgpOY\"\"     (b  @@@@P db    `Lp\"b,\n"
+                ".d(                  _               \"ko \"=d_,Q`  ,_  \"  \"b,\n"
+                "Ql         .         `\"qo,._          \"tQo,_`\"\"bo ;tb,    `\"b,\n"
+                "qQ         |L           ~\"QQQgggc,_.,dObc,opooO  `\"~~\";.   __,7,\n"
+                "qp         t\\io,_           `~\"TOOggQV\"\"\"\"        _,dg,_ =PIQHib.\n"
+                "`qp        `Q[\"tQQQo,_                          ,pl{QOP\"'   7AFR`\n"
+                "  `         `tb  '\"\"tQQQg,_             p\" \"b   `       .;-.`Vl'\n"
+                "             \"Yb      `\"tQOOo,__    _,edb    ` .__   /`/'|  |b;=;.__\n"
+                "                           `\"tQQQOOOOP\"\"`\"\\QV;qQObob\"`-._`\\_~~-._\n"
+                "                                \"\"\"\"    ._        /   | |oP\"\\_   ~\\ ~\\_~\\\n"
+                "                                        `~\"\\ic,qggddOOP\"|  |  ~\\   `\\~-._\n"
+                "                                          ,qP`\"\"\"|\"   | `\\ `;   `\\   `\\\n"
+                "                               _        _,p\"     |    |   `\\`;    |    |\n"
+                "       unknown                 \"boo,._dP\"       `\\_  `\\    `\\|   `\\   ;\n"
+                "                                 `\"7tY~'            `\\  `\\    `|_   |\n"
+                "                                                      `~\\  |" << endl;
+
             exit(EXIT_SUCCESS);
             break;
         default:
