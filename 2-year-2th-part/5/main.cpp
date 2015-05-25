@@ -25,7 +25,7 @@ public:
 	bool find (T x);
 	size_t getSize () { return size; }
 
-	void tree_to_array(Node* tree, T a[]);
+	void toArray(Node* tree, T a[]);
 	void sort(T a[], int elem_total);
 };
 
@@ -79,29 +79,30 @@ template <class T> bool BinaryTree <T> :: find (T x) {
 	return p_find (root, x);
 }
 
-template <class T> void BinaryTree <T> :: tree_to_array(Node* tree, T a[]) {
+template <class T> void BinaryTree <T> :: toArray(Node* tree, T a[]) {
 	static int max2 = 0;                 // счетчик элементов нового массива
 
 	if (tree == NULL) {
 		return;
 	}
 
-	tree_to_array(tree->left, a);       // обход левого поддерева
+	toArray(tree->left, a);       // обход левого поддерева
 	a[max2++] = tree->data;
-	tree_to_array(tree->right, a);      // обход правого поддерева
+	toArray(tree->right, a);      // обход правого поддерева
 }
 
-template <class T> void BinaryTree <T> :: sort(T a[], int elem_total) {
+template <class T> void BinaryTree <T> :: sort(T a[], int count) {
 	Node *root = NULL;
-	for (int i = 0; i < elem_total; i++) {        // проход массива и заполнение дерева
+
+	for (size_t i = 0; i < count; i++) {        // проход массива и заполнение дерева
 		p_add(root, a[i]);
-		size++;
+		this->size++;
 	}
-	tree_to_array(root, a);             // заполнение массива
+	toArray(root, a);             // заполнение массива
 }
 
 int main () {
-	BinaryTree <int> btree;
+	BinaryTree <int> btree = BinaryTree<int>();
 
 	int a[6]= {
 		12,
